@@ -14,23 +14,28 @@ html_hero.appendChild(heroDiv);
 let html_services = document.querySelector(".services");
 
 //eksempel på at udskrive alle overskrifter i services i konsollen:
+
 services.forEach(service => {
     console.log(service.headline);
+
+    const serviceDiv = document.createElement("div");
+    html_services.appendChild(serviceDiv);
+
     const serviceImg = document.createElement("img");
     serviceImg.setAttribute("src", service.illustration);
-    html_services.appendChild(serviceImg);
+    serviceDiv.appendChild(serviceImg);
 
     const h2 = document.createElement("h2");
     h2.textContent = service.headline;
-    html_services.appendChild(h2);
+    serviceDiv.appendChild(h2);
 
     const text = document.createElement("p");
     text.textContent = service.text;
-    html_services.appendChild(text);
+    serviceDiv.appendChild(text);
 
     const linktext = document.createElement("p");
     linktext.textContent = service.linktext;
-    html_services.appendChild(linktext);
+    serviceDiv.appendChild(linktext);
 
 }
 )
@@ -38,18 +43,47 @@ services.forEach(service => {
 let html_facilities = document.querySelector(".facilities");
 const facilitiesDiv = document.createElement("div");
 facilitiesDiv.classList.add("divFacilities");
-facilitiesDiv.innerHTML = "<h2>" + facilities.headline + "</h2>";
-facilities.options.forEach(h => {
+html_facilities.append(facilitiesDiv);
+//facilitiesDiv.innerHTML = "<h2>" + facilities.headline + "</h2>";
+//facilitiesDiv.innerHTML += "<div class=\"divFacilities\">";
 
-    facilitiesDiv.innerHTML +=
-        "<img src=" + h.icon + ">" +
-        "<h2>" + h.headline + "</h2>" +
-        "<p>" + h.text + "</p>" +
-        "<a href= >Show me more</a>";
+facilitiesDiv.innerHTML += `
+<h2>${facilities.headline}</h2>
+<div class="divFacilities__flex">
+    ${test(facilitiesDiv)}
+</div>
+`
 
-    html_facilities.appendChild(facilitiesDiv);
+
+// facilities.options.forEach(h => {
+
+//     facilitiesDiv.innerHTML +=
+//     "<div class=\"card\">" +
+//         "<img src=" + h.icon + ">" +
+//         "<h2>" + h.headline + "</h2>" +
+//         "<p>" + h.text + "</p>" +
+//         "<a href= >Show me more</a>" +
+//     "</div>";
+
+// }
+// )
+
+function test(targetDiv) {
+    let template = "";
+    facilities.options.forEach(h => {
+        template +=
+            "<div class=\"card\">" +
+            "<img src=" + h.icon + ">" +
+            "<h2>" + h.headline + "</h2>" +
+            "<p>" + h.text + "</p>" +
+            "<a href= >Show me more</a>" +
+            "</div>";
+    })
+    return template;
 }
-)
+
+//facilitiesDiv.innerHTML += "</div>";
+html_facilities.appendChild(facilitiesDiv);
 
 
 let html_sites = document.querySelector(".sites");
@@ -103,7 +137,7 @@ footer.cards.forEach(h => {
 )
 
 footerDiv.innerHTML += "<hr>";
-footerDiv.innerHTML += "<p>"+footer.menu.sidekick+"</p>";
+footerDiv.innerHTML += "<p>" + footer.menu.sidekick + "</p>";
 footer.menu.menuitems.forEach(x => {
     footerDiv.innerHTML += "<p>" + x + "</p>";
 }
