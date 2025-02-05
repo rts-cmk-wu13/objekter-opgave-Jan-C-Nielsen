@@ -1,0 +1,19 @@
+.services{
+    display:flex;
+}
+
+.divFacilities__flex{
+    display: flex;
+}
+
+.divSites{
+    display: flex;
+}
+
+.divSites img{
+    max-width: 240px;
+}
+
+footer{
+    background-color: lightgrey;
+}
