@@ -55,15 +55,34 @@ facilities.options.forEach(h => {
 let html_sites = document.querySelector(".sites");
 const sitesDiv = document.createElement("div");
 sitesDiv.classList.add("divSites");
-sitesDiv.innerHTML = "<h2>"+facilities.headline+"</h2>";
+sitesDiv.innerHTML = "<h2>"+sites.headline+"</h2>" +
+"<p>"+sites.text+"</p>" +
+"<button><img srs="+sites.btnicon+">Start</button>";
 sites.places.forEach(h => {
     
-    facilitiesDiv.innerHTML +=
-        "<img src=" + h.icon + ">" +
-        "<h2>" + h.headline + "</h2>" +
-        "<p>" + h.text + "</p>" +
+    sitesDiv.innerHTML +=
+        "<img src=" + h.img + ">" +
+        "<h2>" + h.name + "</h2>" +
+        "<p>" + h.city + "</p>" +
         "<a href= >Show me more</a>" ;
 
-    html_facilities.appendChild(facilitiesDiv);
+        html_sites.appendChild(sitesDiv);
+}
+)
+
+
+
+let html_advantages = document.querySelector(".advantages");
+const advantagesDiv = document.createElement("div");
+advantagesDiv.classList.add("divAdvantages");
+advantagesDiv.innerHTML = "<h2>Our Advantages</h2>";
+advantages.forEach(h => {
+    
+    advantagesDiv.innerHTML +=
+        "<img src=" + h.icon + ">" +
+        "<h2>" + h.headline + "</h2>" +
+        "<p>" + h.text + "</p>";
+
+        html_advantages.appendChild(advantagesDiv);
 }
 )
