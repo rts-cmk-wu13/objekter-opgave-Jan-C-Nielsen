@@ -1,4 +1,48 @@
 // slå dig løs her... 
+
+function FacilitiesCard(facilities) {
+    let template = "";
+    facilities.options.forEach(h => {
+        template +=
+            "<div class=\"card\">" +
+            "<img src=" + h.icon + ">" +
+            "<h2>" + h.headline + "</h2>" +
+            "<p>" + h.text + "</p>" +
+            "<a href= >Show me more</a>" +
+            "</div>";
+    })
+    return template;
+}
+
+
+function SitesCard(s) {
+    let template = "";
+    s.places.forEach(h => {
+
+        template +=
+            "<div><img src=" + h.img + ">" +
+            "<h2>" + h.name + "</h2>" +
+            "<p>" + h.city + "</p>" +
+            "<a href= >View this site</a></div>";
+    }
+    )
+    return template;
+}
+
+function AdvCard(s) {
+    let template = "";
+    advantages.forEach(h => {
+
+        advantagesDiv.innerHTML +=
+            "<div><img src=" + h.icon + ">" +
+            "<h2>" + h.headline + "</h2>" +
+            "<p>" + h.text + "</p><div>";
+    }
+    )
+    return template;
+}
+
+
 let html_hero = document.querySelector(".hero");
 const heroDiv = document.createElement("div");
 heroDiv.classList.add("divHero");
@@ -50,75 +94,33 @@ html_facilities.append(facilitiesDiv);
 facilitiesDiv.innerHTML += `
 <h2>${facilities.headline}</h2>
 <div class="divFacilities__flex">
-    ${test(facilitiesDiv)}
+    ${FacilitiesCard(facilities)}
 </div>
 `
 
-
-// facilities.options.forEach(h => {
-
-//     facilitiesDiv.innerHTML +=
-//     "<div class=\"card\">" +
-//         "<img src=" + h.icon + ">" +
-//         "<h2>" + h.headline + "</h2>" +
-//         "<p>" + h.text + "</p>" +
-//         "<a href= >Show me more</a>" +
-//     "</div>";
-
-// }
-// )
-
-function test(targetDiv) {
-    let template = "";
-    facilities.options.forEach(h => {
-        template +=
-            "<div class=\"card\">" +
-            "<img src=" + h.icon + ">" +
-            "<h2>" + h.headline + "</h2>" +
-            "<p>" + h.text + "</p>" +
-            "<a href= >Show me more</a>" +
-            "</div>";
-    })
-    return template;
-}
-
-//facilitiesDiv.innerHTML += "</div>";
 html_facilities.appendChild(facilitiesDiv);
 
 
 let html_sites = document.querySelector(".sites");
 const sitesDiv = document.createElement("div");
 sitesDiv.classList.add("divSites");
-sitesDiv.innerHTML = "<h2>" + sites.headline + "</h2>" +
+sitesDiv.innerHTML = "<div><h2>" + sites.headline + "</h2>" +
     "<p>" + sites.text + "</p>" +
-    "<button><img srs=" + sites.btnicon + ">Start</button>";
-sites.places.forEach(h => {
-
-    sitesDiv.innerHTML +=
-        "<img src=" + h.img + ">" +
-        "<h2>" + h.name + "</h2>" +
-        "<p>" + h.city + "</p>" +
-        "<a href= >Show me more</a>";
-
-    html_sites.appendChild(sitesDiv);
-}
-)
-
-
+    "<button><img srs=" + sites.btnicon + ">Start</button></div>";
+sitesDiv.innerHTML += `
+        ${SitesCard(sites)}
+    `
+html_sites.append(sitesDiv);
 
 let html_advantages = document.querySelector(".advantages");
 const advantagesDiv = document.createElement("div");
 advantagesDiv.classList.add("divAdvantages");
 advantagesDiv.innerHTML = "<h2>Our Advantages</h2>";
-advantages.forEach(h => {
-
-    advantagesDiv.innerHTML +=
-        "<img src=" + h.icon + ">" +
-        "<h2>" + h.headline + "</h2>" +
-        "<p>" + h.text + "</p>";
-
-}
-)
+advantagesDiv.innerHTML += `
+<div>
+        ${AdvCard(advantages)}
+        </div>
+    `
 html_advantages.appendChild(advantagesDiv);
 
 console.log(footer);
