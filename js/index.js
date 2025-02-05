@@ -38,14 +38,14 @@ services.forEach(service => {
 let html_facilities = document.querySelector(".facilities");
 const facilitiesDiv = document.createElement("div");
 facilitiesDiv.classList.add("divFacilities");
-facilitiesDiv.innerHTML = "<h2>"+facilities.headline+"</h2>";
+facilitiesDiv.innerHTML = "<h2>" + facilities.headline + "</h2>";
 facilities.options.forEach(h => {
 
     facilitiesDiv.innerHTML +=
         "<img src=" + h.icon + ">" +
         "<h2>" + h.headline + "</h2>" +
         "<p>" + h.text + "</p>" +
-        "<a href= >Show me more</a>" ;
+        "<a href= >Show me more</a>";
 
     html_facilities.appendChild(facilitiesDiv);
 }
@@ -55,18 +55,18 @@ facilities.options.forEach(h => {
 let html_sites = document.querySelector(".sites");
 const sitesDiv = document.createElement("div");
 sitesDiv.classList.add("divSites");
-sitesDiv.innerHTML = "<h2>"+sites.headline+"</h2>" +
-"<p>"+sites.text+"</p>" +
-"<button><img srs="+sites.btnicon+">Start</button>";
+sitesDiv.innerHTML = "<h2>" + sites.headline + "</h2>" +
+    "<p>" + sites.text + "</p>" +
+    "<button><img srs=" + sites.btnicon + ">Start</button>";
 sites.places.forEach(h => {
-    
+
     sitesDiv.innerHTML +=
         "<img src=" + h.img + ">" +
         "<h2>" + h.name + "</h2>" +
         "<p>" + h.city + "</p>" +
-        "<a href= >Show me more</a>" ;
+        "<a href= >Show me more</a>";
 
-        html_sites.appendChild(sitesDiv);
+    html_sites.appendChild(sitesDiv);
 }
 )
 
@@ -77,12 +77,36 @@ const advantagesDiv = document.createElement("div");
 advantagesDiv.classList.add("divAdvantages");
 advantagesDiv.innerHTML = "<h2>Our Advantages</h2>";
 advantages.forEach(h => {
-    
+
     advantagesDiv.innerHTML +=
         "<img src=" + h.icon + ">" +
         "<h2>" + h.headline + "</h2>" +
         "<p>" + h.text + "</p>";
 
-        html_advantages.appendChild(advantagesDiv);
 }
 )
+html_advantages.appendChild(advantagesDiv);
+
+console.log(footer);
+let html_footer = document.querySelector(".footer");
+const footerDiv = document.createElement("div");
+footerDiv.classList.add("divFooter");
+footerDiv.innerHTML = "<h2>" + footer.headline + "</h2>";
+footerDiv.innerHTML += "<h1>" + footer.bigtext + "</h1>";
+footer.cards.forEach(h => {
+
+    footerDiv.innerHTML += "<h2>" + h.headline + "</h2>";
+
+    h.textlist.forEach(x => { footerDiv.innerHTML += "<p>" + x + "</p>" });
+
+}
+)
+
+footerDiv.innerHTML += "<hr>";
+footerDiv.innerHTML += "<p>"+footer.menu.sidekick+"</p>";
+footer.menu.menuitems.forEach(x => {
+    footerDiv.innerHTML += "<p>" + x + "</p>";
+}
+)
+html_footer.appendChild(footerDiv);
+
